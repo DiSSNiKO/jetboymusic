@@ -1,38 +1,318 @@
+:root {
+  --searchcontcl: rgb(248, 83, 150);
+  --playercontcl: rgb(247, 58, 132);
+  --leftrightsize: 35px;
+  --playpausesize: 50px;
+}
+
 .App {
   text-align: center;
+  height: 100vh;
+  display: flex;
+  overflow-y: scroll;
 }
 
-.App-logo {
-  height: 40vmin;
+.App>div {
+  height: 100%;
+  width: 50%;
+}
+
+.song-list-search-cont {
+  background-color: var(--searchcontcl);
+}
+
+.player-cont {
+  background-color: var(--playercontcl);
+  padding: 30px 0;
+}
+
+/*search bar*/
+
+.search-bar-cont {
+  width: 60%;
+  margin: auto;
+  margin-top: 20px;
+  height: 40px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: azure;
+  position: relative;
+  display: flex;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+
+}
+
+
+
+.hover-decor {
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: 0;
+  min-width: 0;
   pointer-events: none;
+  background-color: transparent;
+  transform-origin: left;
+  transition: all 0.4s;
+  height: 100%;
+  z-index: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.input-n-dec:hover>.hover-decor {
+  max-width: 100%;
+  min-width: 100%;
+  background-color: rgba(255, 199, 0, 0.4);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.input-n-dec {
+  width: 75%;
+  height: 100%;
+}
+
+
+
+
+
+.input-n-dec input {
+  height: 100%;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  transition: all 0.3s;
+  transform-origin: right;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.input-n-dec input:focus~.hover-decor {
+  max-width: 100%;
+  min-width: 100%;
+  background-color: rgba(255, 199, 0, 0.4);
+}
+
+.magni-ikonka {
+  width: 25%;
+  height: 100%;
+  position: relative;
+}
+
+.magni-ikonka img {
+  width: 70%;
+  height: 70%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+/* music player */
+.player-cont {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.music-player-cont {
+  background-color: rgba(255, 185, 150, 0.8);
+  width: 60%;
+  padding: 25px 40px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.music-player-cont img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 6px;
+}
+
+.App audio {
+  display: none;
+}
+
+.c-buttons {
+  display: flex;
+  margin: auto;
+  margin-top: 10px;
+  width: 70%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.c-buttons img {
+  height: var(--leftrightsize);
+  width: var(--leftrightsize);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+#prev-song:hover {
+  transform: translateY(-3px) scale(1.02) rotate(15deg);
+}
+
+#next-song:hover {
+  transform: translateY(-3px) scale(1.02) rotate(-15deg);
+}
+
+#play-pause:hover {
+  transform: translateY(-3px) scale(1.05);
+}
+
+#play-pause {
+  height: var(--playpausesize);
+  width: var(--playpausesize);
+}
+
+.seeker {
+  width: 90%;
+  height: 10px;
+  background-color: rgb(34, 34, 34);
+  border-radius: 0px;
+  margin: 15px auto;
+  cursor: pointer;
+  position: relative;
+}
+
+.seeker-fill {
+  height: 100%;
+  width: 0;
+  background-color: var(--playercontcl);
+  border-radius: 0px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: all 0.1s;
+}
+
+#song-name {
+  font-size: 1.45rem;
+  color: black;
+  font-weight: 600;
+  margin-top: 10px;
+  font-family: "Bruno Ace";
+}
+
+@media screen and (max-width: 1050px) {
+  :root {
+    --leftrightsize: 25px;
+    --playpausesize: 40px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .song-list-search-cont {
+    width: 40% !important;
   }
+
+  .player-cont {
+    width: 60% !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  :root {
+    --leftrightsize: 35px;
+    --playpausesize: 50px;
+  }
+
+  .song-list-search-cont {
+    width: 100% !important;
+  }
+
+  .player-cont {
+    width: 100% !important;
+  }
+
+  .App {
+    flex-direction: column-reverse;
+  }
+
+  .music-player-cont {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  :root {
+    --leftrightsize: 30px;
+    --playpausesize: 40px;
+  }
+
+  #song-name {
+    font-size: 1.4rem;
+  }
+
+  .music-player-cont {
+    width: 75%;
+  }
+}
+
+/* song choice */
+
+.song-choice img {
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  top: -30%;
+  right: 3%;
+}
+
+.song-choice {
+  display: flex;
+  position: relative;
+  background-color: antiquewhite;
+  border-radius: 6px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+  width: 80%;
+  margin: 50px auto;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.song-choice h2 {
+  font-family: "Bruno Ace";
+  font-size: 1.1rem;
+  z-index: 1;
+  position: inherit;
+  margin-left: 25px;
+}
+
+.song-choice>.hover-decor {
+  border-radius: 6px;
+}
+
+.song-choice:hover {
+  transform: rotate(-1deg) scale(1.02);
+}
+
+.song-choice:hover>.hover-decor {
+  background-color: rgba(255, 152, 101, 0.8);
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.song-choice:hover>img {
+  fill: yellow;
+}
+
+.elizabeth {
+  aspect-ratio: initial !important;
+  width: 100px !important;
+  transform: rotate(-135deg);
+  position: absolute;
+  top: -45% !important;
+  left: -12% !important;
+}
+
+.songs-cont {
+  max-height: 450px;
+  overflow-y: scroll;
+  margin-top: 100px;
+}
+
+.songs-cont::-webkit-scrollbar {
+  display: none;
 }
