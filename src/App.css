@@ -314,8 +314,8 @@
 }
 
 .songs-cont {
-  margin-top: 100px;
-  max-height: 375px;
+  margin-top: 50px;
+  max-height: calc(100vh - 150px);
   overflow-y: scroll;
 }
 
