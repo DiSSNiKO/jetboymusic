@@ -7,18 +7,18 @@
 
 .App {
   text-align: center;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
-  overflow-y: scroll;
 }
 
 .App>div {
-  height: 100%;
+  min-height: 100%;
   width: 50%;
 }
 
 .song-list-search-cont {
   background-color: var(--searchcontcl);
+
 }
 
 .player-cont {
@@ -73,7 +73,13 @@
 
 
 
-.input-n-dec input {
+.input-n-dec form {
+  height: 100%;
+  width: 100%;
+
+}
+
+.input-n-dec form>input {
   height: 100%;
   width: 100%;
   border: none;
@@ -301,16 +307,16 @@
 .elizabeth {
   aspect-ratio: initial !important;
   width: 100px !important;
-  transform: rotate(-135deg);
+  transform: rotate(-155deg);
   position: absolute;
   top: -45% !important;
-  left: -12% !important;
+  left: -15% !important;
 }
 
 .songs-cont {
-  max-height: 450px;
-  overflow-y: scroll;
   margin-top: 100px;
+  max-height: 375px;
+  overflow-y: scroll;
 }
 
 .songs-cont::-webkit-scrollbar {
