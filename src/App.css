@@ -1,6 +1,6 @@
 :root {
   --searchcontcl: rgb(248, 83, 150);
-  --playercontcl: rgb(247, 58, 132);
+  --playercontcl: #f73a84;
   --leftrightsize: 35px;
   --playpausesize: 50px;
 }
@@ -194,12 +194,110 @@
   transition: all 0.1s;
 }
 
+.volume-level {
+  width: 40%;
+  height: 7px;
+  border-radius: 4px;
+}
+
+.volume-level>div {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.volume-level img {
+  width: 25px;
+  position: absolute;
+  top: -10px;
+  left: -30px;
+}
+
 #song-name {
   font-size: 1.45rem;
   color: black;
   font-weight: 600;
   margin-top: 10px;
   font-family: "Bruno Ace";
+}
+
+/* song choice */
+
+.song-choice img {
+  height: 35px;
+  width: 35px;
+  position: absolute;
+  top: -30%;
+  right: 3%;
+}
+
+.song-choice {
+  display: flex;
+  position: relative;
+  background-color: antiquewhite;
+  border-radius: 6px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
+  width: 80%;
+  margin: 50px auto;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.song-choice h2 {
+  font-family: "Bruno Ace";
+  font-size: 1.1rem;
+  z-index: 1;
+  position: inherit;
+  margin-left: 25px;
+}
+
+.song-choice h3 {
+  font-family: "Bruno Ace";
+  font-size: 0.8rem;
+  z-index: 1;
+  color: #337180;
+  position: absolute;
+  right: 10px;
+  bottom: 0px;
+  margin: 0 5px 5px 0;
+  opacity: .8;
+}
+
+.song-choice>.hover-decor {
+  border-radius: 6px;
+}
+
+.song-choice:hover {
+  transform: rotate(-1deg) scale(1.02);
+}
+
+.song-choice:hover>.hover-decor {
+  background-color: rgba(255, 152, 101, 0.8);
+  max-width: 100%;
+  min-width: 100%;
+}
+
+.song-choice:hover>img {
+  fill: yellow;
+}
+
+.elizabeth {
+  aspect-ratio: initial !important;
+  width: 80px !important;
+  transform: rotate(-155deg);
+  position: absolute;
+  top: -35px !important;
+  left: -25px !important;
+}
+
+.songs-cont {
+  margin-top: 50px;
+  max-height: calc(100vh - 150px);
+  overflow-y: scroll;
+}
+
+.songs-cont::-webkit-scrollbar {
+  display: none;
 }
 
 @media screen and (max-width: 1050px) {
@@ -253,72 +351,17 @@
   .music-player-cont {
     width: 75%;
   }
-}
 
-/* song choice */
+  .song-choice {
+    flex-direction: column;
+  }
 
-.song-choice img {
-  height: 35px;
-  width: 35px;
-  position: absolute;
-  top: -30%;
-  right: 3%;
-}
+  .song-choice h2 {
+    margin: 0 0 20px 0;
+  }
 
-.song-choice {
-  display: flex;
-  position: relative;
-  background-color: antiquewhite;
-  border-radius: 6px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.35);
-  width: 80%;
-  margin: 50px auto;
-  padding: 10px 0;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.song-choice h2 {
-  font-family: "Bruno Ace";
-  font-size: 1.1rem;
-  z-index: 1;
-  position: inherit;
-  margin-left: 25px;
-}
-
-.song-choice>.hover-decor {
-  border-radius: 6px;
-}
-
-.song-choice:hover {
-  transform: rotate(-1deg) scale(1.02);
-}
-
-.song-choice:hover>.hover-decor {
-  background-color: rgba(255, 152, 101, 0.8);
-  max-width: 100%;
-  min-width: 100%;
-}
-
-.song-choice:hover>img {
-  fill: yellow;
-}
-
-.elizabeth {
-  aspect-ratio: initial !important;
-  width: 100px !important;
-  transform: rotate(-155deg);
-  position: absolute;
-  top: -45% !important;
-  left: -15% !important;
-}
-
-.songs-cont {
-  margin-top: 50px;
-  max-height: calc(100vh - 150px);
-  overflow-y: scroll;
-}
-
-.songs-cont::-webkit-scrollbar {
-  display: none;
+  .song-choice h3 {
+    position: relative;
+    margin: 0;
+  }
 }
