@@ -7,7 +7,7 @@ import { randomPic, arrayWithoutElem, getMusicObjectArray } from './utility';
 
 
 function App() {
-  const [picturePaths, setPicturePaths] =useState(['/images/musig.jpg','/images/bocchithegoat.jpg','/images/hokagokingtime.jpg','/images/mondayleftme86.jpg','/images/mondayleftmefixed.jpg']);
+  const [picturePaths, setPicturePaths] = useState(['/images/musig.jpg','/images/bocchithegoat.jpg','/images/hokagokingtime.jpg','/images/mondayleftme86.jpg','/images/mondayleftmefixed.jpg']);
   const [songs, setSongs] = useState(getMusicObjectArray(`Ain't No Rest For The Wicked.mp3
   Alessia Cara - Here.mp3
   Arctic Monkeys - Do I Wanna Know_ (Official Video).mp3
@@ -76,6 +76,7 @@ function App() {
   const pauseBtn = useRef(null);
   const musik = useRef(null);
   const handleEnded = () => {
+    musik.current.src = randomPic(arrayWithoutElem(musik.current.src, picturePaths));
     if (currentSong < lastSongIndex) {
       const updatedSongs = songs;
       updatedSongs[currentSong].played++;
@@ -155,7 +156,9 @@ useEffect(()=>{
 
 return (
     <div className="App">
-      <audio controls ref={audioRef} onTimeUpdate={handleSeeker} onEnded={handleEnded} >
+      <audio controls ref={audioRef} onTimeUpdate={handleSeeker} onEnded={
+        handleEnded
+      }>
         <source src={songs[currentSong].path} type="audio/mpeg" />
       </audio>
       <div className='song-list-search-cont'>

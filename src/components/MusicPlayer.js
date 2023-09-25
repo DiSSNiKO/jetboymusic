@@ -6,7 +6,6 @@ function MusicPlayer(props) {
     const { pauseBtn, picturePaths, musicImgSrcChanger, musik, setPreviousSong, setSongs, seekerfill, lastSongIndex, handleSeeker, audioRef, isPlaying, setIsPlaying, handlePause, currentSong, setCurrentSong, songs } = props;
     const handleSeekerChange = (e) => {
         const seekerPercentage = Math.round((e.nativeEvent.offsetX / Number(window.getComputedStyle(e.target.closest(".seeker")).width.slice(0, -2))) * 100);
-        console.log(seekerPercentage);
         audioRef.current.currentTime = Math.round(seekerPercentage * (audioRef.current.duration / 100));
         handleSeeker();
     }
