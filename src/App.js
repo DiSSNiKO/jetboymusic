@@ -3,7 +3,7 @@ import './App.css';
 import MusicPlayer from './components/MusicPlayer';
 import SearchBar from './components/SearchBar';
 import SongChoice from './components/SongChoice';
-import { randomPic, arrayWithoutElem, getMusicObjectArray } from './utility';
+import { randomPic, arrayWithoutElem, getMusicObjectArray, fadeOutDoStuffThenFadeInLoadable } from './utility';
 
 
 function App() {
@@ -157,7 +157,11 @@ useEffect(()=>{
 return (
     <div className="App">
       <audio controls ref={audioRef} onTimeUpdate={handleSeeker} onEnded={
-        handleEnded
+        ()=>{
+          if(!isFirst){
+            fadeOutDoStuffThenFadeInLoadable(musik.current, handleEnded, musicImgSrcChanger, picturePaths);
+          }
+        }
       }>
         <source src={songs[currentSong].path} type="audio/mpeg" />
       </audio>
