@@ -1,12 +1,18 @@
+import { fadeOutDoStuffThenFadeInLoadable, getMusicObjectArray } from "../utility";
+
+
 function SongChoice(props) {
-    const { setSongs, setPreviousSong, no, songs, currentSong, setCurrentSong, index } = props
+    const { setSongs, musik, picturePaths, musicImgSrcChanger, setPreviousSong, no, songs, currentSong, setCurrentSong, index } = props;
+    function songChoiceClick(){
+        const updatedSongs = songs;
+        updatedSongs[currentSong].played++;
+        setSongs(updatedSongs);
+        setPreviousSong(currentSong);
+        setCurrentSong(index);
+    }
     return (
         <div className="song-choice" data-no={no} onClick={() => {
-            const updatedSongs = songs;
-            updatedSongs[currentSong].played++;
-            setSongs(updatedSongs);
-            setPreviousSong(currentSong);
-            setCurrentSong(index);
+            fadeOutDoStuffThenFadeInLoadable(musik.current,songChoiceClick, musicImgSrcChanger, picturePaths);
         }}>
             <div className="hover-decor"></div>
             <img src="/images/wok.svg" alt="" />

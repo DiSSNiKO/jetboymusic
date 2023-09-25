@@ -155,7 +155,9 @@
   transition: all 0.2s;
   cursor: pointer;
 }
-
+.music-pic {
+  transition: all 0.3s;
+}
 #prev-song:hover {
   transform: translateY(-3px) scale(1.02) rotate(15deg);
 }
@@ -298,6 +300,11 @@
 
 .songs-cont::-webkit-scrollbar {
   display: none;
+}
+
+.jetUtilFadeOut {
+  opacity: 0;
+  user-select: none;
 }
 
 @media screen and (max-width: 1050px) {
